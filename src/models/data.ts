@@ -31,7 +31,7 @@ export interface StoreState {
 //OwnProps
 
 export interface ITodoMapDispatch {
-    simpleAction : () => void;
+    fetchTodos : () => void;
 }
 
 export interface ITodoMapStateToProps {

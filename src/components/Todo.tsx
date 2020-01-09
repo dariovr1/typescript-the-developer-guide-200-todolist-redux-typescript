@@ -11,7 +11,7 @@ const mapStateToProps = (state : StoreState) : {todos : Todo[]}  => {
 
 const mapDispatchToProps = (dispatch : Dispatch<TodoAction>) => {
     return {
-        simpleAction : () =>  dispatch(fetchTodos())
+        fetchTodos : () =>  dispatch(fetchTodos())
     }
 }
 
@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch : Dispatch<TodoAction>) => {
 export const _Todo: React.FC<AppProps> = (props) => {
 
     useEffect( () => {
-       props.simpleAction();
+       props.fetchTodos();
     },[]);
 
     return (
