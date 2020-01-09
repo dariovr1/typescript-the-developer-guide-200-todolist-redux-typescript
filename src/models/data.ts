@@ -3,7 +3,7 @@ import {fetchTodos} from '../actions/index';
 
 //todo Payload
 
-export interface Todo {
+export interface ITodo {
     id: number;
     title: string;
     completed : boolean;
@@ -11,31 +11,32 @@ export interface Todo {
 
 //Type Actions
 
-export interface FetchTodos {
+interface FetchTodos {
     type : ActionTypes.fetchTodos,
-    payload : Todo[]
+    payload : ITodo[]
 }
 
 interface DeleteTodo {
     type : ActionTypes.deleteTodos,
-    id : number
+    payload : Number
 }
 
 
 //store
 
 export interface StoreState {
-    todos : Todo[]
+    todos : ITodo[]
 }
 
 //OwnProps
 
 export interface ITodoMapDispatch {
-    fetchTodos : () => void;
+    fetchTodos : () => void,
+    deleteTodo : (id : Number) => void
 }
 
 export interface ITodoMapStateToProps {
-    todos : Todo[]
+    todos : ITodo[]
 }
 
 

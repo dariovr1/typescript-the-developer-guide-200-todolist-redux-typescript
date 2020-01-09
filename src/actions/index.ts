@@ -1,18 +1,25 @@
 import {Dispatch} from 'redux';
 import apiClient  from '../clients/Clients';
-import {  Todo, FetchTodos } from "../models/data";
+import {  ITodo, TodoAction } from "../models/data";
 import {ActionTypes} from "../types/index";
 
 
 export const fetchTodos = () : any => {
     console.log("hi from fetchTodos");
-    return async (dispatch : Dispatch ) => {
-        const response = await apiClient.get<Todo[]>("/todos");
+    return async (dispatch : Dispatch<TodoAction> ) => {
+        const response = await apiClient.get<ITodo[]>("/todos");
         console.log(response);
-        dispatch<FetchTodos>({
+        dispatch<TodoAction>({
             type : ActionTypes.fetchTodos,
             payload : response.data
         });
 
     }
 }
+
+export const deleteTodo = (id : Number) : TodoAction  => {
+        return {
+            type : ActionTypes.deleteTodos,
+            payload : id
+        }
+} 
